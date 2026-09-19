@@ -35,3 +35,17 @@ The project also documents its own reasoning as it went, including two places wh
 5. Modelling and visualisation (Power BI). The full cleaning pipeline was rebuilt natively inside Power BI's own Power Query editor — importing the raw data directly rather than depending on the Excel working copy staying in its cleaned state, so the .pbix file is fully self-contained. Each KPI has its own report page; a Summary page pulls the headline visual from each, with button-based navigation connecting every page back and forth. Several KPIs go beyond drag-and-drop visuals with custom DAX measures, CALCULATE, FILTER, ALL, and DIVIDE combined to calculate dynamic %-of-total shares across categories, and a manual year-over-year comparison built the same way: the dataset's plain integer Year column doesn't support Power BI's built-in SAMEPERIODLASTYEAR, so each measure looks up its own previous-year value explicitly via a FILTER(ALL()) pattern.
 
 6. Verification and sign-off. One open question surfaced during cleaning — whether repeated customer-ID submissions could ever be legitimate, or should always be treated as accidental resubmissions was raised with the data owner rather than assumed. Work continued on a working copy in parallel while awaiting a reply, with a clean baseline copy held in reserve. The approach was subsequently confirmed and approved.
+
+## Key Findings (Snapshot)
+1. The top 4 acquisition channels are Facebook Ad, Instagram Ad, Friend (referral), and YouTube — but referral actually led every channel in the first year, only     overtaken once paid ad spend scaled up the following year.
+2. Referral is a genuinely significant channel overall. The 3rd largest of 10, driving 17.55% of all signups across the 3-year period. A year that looks like a       decline in referral share is actually explained by a surge in paid ad volume, not a weakening of word-of-mouth.
+3. The weakest age segment isn't uniform across channels: one bracket is consistently the softest spot for most channels, but the pattern isn't identical for         every channel, a finding only visible by breaking the data down by channel rather than looking at the age distribution alone.
+4. The male/female signup split has been remarkably stable across all three years (a roughly 2:1 ratio, drifting by about one percentage point). A year-on-year       view of raw signup counts shows both genders swinging together in near-identical proportion, confirming the swing reflects overall traffic volume, not a real      shift in gender balance, and reinforcing rather than contradicting the share-based finding.
+5. Two education levels account for over three-quarters of all signups, and a specific pairing of country and education level, not country alone, is where the        concentration really sits.
+
+(Full detail and the reasoning behind each finding are in the Power BI report and the process documentation.)
+
+## Tools Used
+- Microsoft Excel — data quality audit, Power Query-based cleaning, and PivotTable KPI calculations
+- Microsoft Power BI — self-contained data model, DAX measures, and the full interactive report
+- Power Query (M) — used in both Excel and Power BI so every cleaning step is reproducible, not a manual one-off edit
