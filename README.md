@@ -1,6 +1,9 @@
 
 # Customer Acquisition KPI Analysis
 
+
+<img width="800" height="430" alt="Image" src="https://github.com/user-attachments/assets/a17dd690-d5d1-4bd6-84ae-f533ed51d9b8" />
+
 A data quality audit and 5-KPI analysis of a real-world customer acquisition dataset, built end-to-end in Excel and Power BI from a messy raw export to a self-contained, interactive report.
 
 ## Overview
